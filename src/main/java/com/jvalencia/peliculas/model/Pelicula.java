@@ -3,6 +3,8 @@ package com.jvalencia.peliculas.model;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.Max;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -30,8 +32,8 @@ public class Pelicula {
     private String titulo;
 
     @NotNull(message="El año de la película no puede ser nulo.")
-    @NotBlank(message = "El año de la película es obligatorio.")
-    @Size(min = 4, max = 4, message = "El año de la película debe tener 4 caracteres.")
+    @Min(value = 1800, message = "El año debe ser mayor a 1800.")
+    @Max(value = 2025, message = "El año debe ser menor a 2025.")
     private int anio;
 
     @NotNull(message="El nombre del director no puede ser nulo.")
