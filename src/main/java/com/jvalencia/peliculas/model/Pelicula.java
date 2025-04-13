@@ -22,6 +22,8 @@ import lombok.NoArgsConstructor;
 
 public class Pelicula {
 
+    // ### Definir los atributos de la entindad y sus validaciones para cada uno de ellos ###
+
     @Id
     @NotNull(message="El Id del registro no puede ser nulo.")
     private Long id;
@@ -48,7 +50,7 @@ public class Pelicula {
 
     @NotNull(message="La sinopsis de la película no puede ser nulo.")
     @NotBlank(message = "La sinopsis de la película es obligatorio.")
-    @Size(min = 3, max = 100, message = "la sinopsis de la película debe tener entre 2 y 150 caracteres.")
+    @Size(min = 3, max = 150, message = "la sinopsis de la película debe tener entre 2 y 150 caracteres.")
     private String sinopsis;
 
 }

@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+// ### Define el orden en que se presentará la respuesta en el JSON
 @JsonPropertyOrder({"status","cantidad","timestamp","data"})
 
 public class ResponseWrapper<T> {

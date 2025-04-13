@@ -41,11 +41,10 @@ public class GlobalExceptionHandler {
 
             body.put("message", mensajes);
 
-            return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
-
-            
+            return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);            
         }
     
+    //Excepcion que maneja errores cuando el JSON no tenga la estructura adecuada
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public ResponseEntity<Object> handleJsonParseError(HttpMessageNotReadableException ex){
         Map<String, Object> body = new HashMap<>();
@@ -57,6 +56,7 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
     }
 
+    //Excepcion que maneja errores cuando la solicitud realizada no está definida en el proyecto
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<Object> handleIllegalArgument(IllegalArgumentException ex) {
         Map<String, Object> body = new HashMap<>();
@@ -68,13 +68,13 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
     }
 
-
+    //Excepción que maneja errores que se producen cuando no se cumple la integridad del Json (Id duplicado, restricciones en la BD, etc)
     @ExceptionHandler(DataIntegrityViolationException.class)
     public ResponseEntity<Object> handleDataIntegrity(DataIntegrityViolationException ex){
         Map<String, Object> body = new HashMap<>();
         body.put("timestamp", LocalDateTime.now());
         body.put("status", HttpStatus.CONFLICT.value());
-        body.put("error", "Ha ocurrido una vioalción a la integridad");
+        body.put("error", "Ha ocurrido una violación a la integridad");
         body.put("message",
         "No se pudo guardar los datos en la base de datos. Por favor, revise que los datos no se encuentren duplicados o inválidos.");
 
@@ -82,7 +82,7 @@ public class GlobalExceptionHandler {
     }
 
 
-
+    //Excepción que majera errores que no están definidos anteriormente, por ej: problemas en la red, no se ejecuta el motor de BD
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Object> handleGeneric(Exception ex){
         Map<String, Object> body = new HashMap<>();
