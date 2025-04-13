@@ -4,6 +4,7 @@ import com.jvalencia.peliculas.model.Pelicula;
 import com.jvalencia.peliculas.model.ResponseWrapper;
 import com.jvalencia.peliculas.service.PeliculaService;
 
+// Se agrega dependencia Valid para realizar las validaciones en los métodos que lo requieran
 import jakarta.validation.Valid;
 
 import org.springframework.http.HttpStatus;
@@ -57,7 +58,7 @@ public class PeliculaController {
     // ### Endpoint para actualizar una película por Id ###
     @PutMapping("/{id}")
     public ResponseEntity<ResponseWrapper<Pelicula>> actualizar(@PathVariable Long id,
-        // @Valid le dice a St¡pring boot que valide los datos los atributdos de peliculaUpdated
+        // @Valid le dice a Spring boot que valide los datos los atributdos de peliculaUpdated
         @Valid @RequestBody Pelicula peliculaUpdated){
 
             //Ejecuta el metodo actualizar y recibe el id y el Json del body

@@ -1,5 +1,6 @@
 package com.jvalencia.peliculas.model;
 
+// ### Se agregan dependenias de validación
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
