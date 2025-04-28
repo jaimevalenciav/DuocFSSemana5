@@ -13,7 +13,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class PeliculaService {
     @Autowired
-    private PeliculaRepository repositorio;
+    private final PeliculaRepository repositorio;
+
+    public PeliculaService(PeliculaRepository peliculaRepository) {
+        this.repositorio = peliculaRepository;
+    }
 
     public List<Pelicula>traePeliculas(){
         return repositorio.findAll();
